@@ -59,9 +59,9 @@ print(is_positive(0))   # 输出: 非正数
 print(is_positive(-3))  # 输出: 非正数
 ```
 
-![image-20250901151413679](D:\131\测试笔记md\image\image-20250901151413679.png)
+![image-20250901151413679](D:\131\git\测试笔记md\image\image-20250901151413679.png)
 
-![image-20250901151739066](D:\131\测试笔记md\image\image-20250901151739066.png)
+![image-20250901151739066](D:\131\git\测试笔记md\image\image-20250901151739066.png)
 
 ## 打完断点后再进行debug
 
@@ -82,7 +82,7 @@ else:
 
 **break和continue只能放在循环内**
 
-![image-20250901171500910](D:\131\测试笔记md\image\image-20250901171500910.png)
+![image-20250901171500910](D:\131\git\测试笔记md\image\image-20250901171500910.png)
 
 ```
 l = [2, 7, 3, 4, 9, 1]
@@ -158,7 +158,7 @@ def 函数名（参数列表）:
 
   
 
-![img](D:\131\测试笔记md\image\py-tup-10-26-1.png)
+![img](D:\131\git\测试笔记md\image\py-tup-10-26-1.png)
 
 ```
 def max(a, b):#若def max(a==1, b==2)则1，2为默认值，若def max(a：str, b：int)a只能传字符串，b只能传整数
@@ -240,6 +240,37 @@ def test(*a):
     print(a)
 test(1)
 输出(1,)
+
+加了星号 * 的参数会以元组(tuple)的形式导入
+def funC (*args):
+    print(args)
+    print(type(args))
+
+funC(1,2,"你好")
+
+(1, 2, '你好')
+<class 'tuple'>
+
+加了两个星号 *\* 的参数会以字典的形式导入。
+def funC (**kwargs):
+    print(kwargs)
+    print(type(kwargs))
+
+funC(name="John", age=30, city="San Francisco")
+
+{'name': 'John', 'age': 30, 'city': 'San Francisco'}
+<class 'dict'>
+
+
+
+
+定义时打包	def func(*args): → 参数在函数定义中，用 * 收集
+调用时解包	func(*iterable) → 参数在函数调用中，用 * 展开
+
+
+find_element(*locator)	变量 locator	✅ 合法，* 修饰完整变量
+find_element(self.*locator)	属性访问表达式 self.locator	❌ 非法，* 不能插入属性访问中间
+find_element(*self.locator)	属性访问表达式 self.locator	✅ 合法，* 修饰完整表达式
 ```
 
 ### 同样**加了星号 * 的调用会解析元组。**
@@ -264,8 +295,12 @@ test(1)
 #### 在函数定义语句 `def function_name(*args):` 中，`*args` 代表可变位置参数。其中，`*` 具备以下功能：
 
 1. **参数收集**：允许函数接受任意数量的位置参数，并将这些参数收集到一个元组 `args` 中。例如，当函数被调用为 `function_name(1, 'two', 3.0)` 时，在函数内部，`args` 呈现为 `(1, 'two', 3.0)`。
+
 2. **增强灵活性**：适用于不确定函数调用时会传入多少个位置参数的场景。以自动化测试中元素定位函数为例，由于不同元素的定位方式可能各不相同，使用 `*args` 能够灵活接收各种定位参数组合，如 `(By.ID, "element_id")` 或 `(By.CLASS_NAME, "element_class")` 等，从而满足多样化的定位需求。
+
 3. 与之相对，如果函数定义为 `def function_name(args):`（未使用 `*`），函数仅能接受一个位置参数，该参数会被视为一个整体传入，而不会将多个值解析为独立参数。例如，调用 `function_name((1, 2, 3))`，此时 `args` 就是 `(1, 2, 3)` 这个元组，并非将 `1`、`2`、`3` 当作单独参数处理。
+
+   
 
 ## 函数调用时使用 `*`
 
@@ -496,7 +531,7 @@ print(Company.get_company_name())
 
 #### 所以写自动化时所有的执行代码操作放在if __name__=="__main__":里面
 
-![image-20250121115650885](D:\131\测试笔记md\image\image-20250121115650885.png)
+![image-20250121115650885](D:\131\git\测试笔记md\image\image-20250121115650885.png)
 
 导入包的时候，不会将其中的.py文件全部执行，而是只执行这个包里面的 \_\_init\_\_.py文件，也可以理解为导入包的时候，只是导入了\_\_init\_\_.py
 
